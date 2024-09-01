@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 
 
 # Create your views here.
@@ -7,17 +8,6 @@ def posts(request):
         request,
         "posts/posts_list.html",
         {
-            "posts": [
-                "Post 1",
-                "Post 2",
-                "Post 3",
-                "Post 4",
-                "Post 5",
-                "Post 6",
-                "Post 7",
-                "Post 8",
-                "Post 9",
-                "Post 10",
-            ]
+            "posts": Post.objects.all().order_by("created_at").reverse(),
         },
     )
