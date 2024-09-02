@@ -3,8 +3,8 @@
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<section class="flex-center">
-    <img src="{{ post.banner.url }}" alt="">
+<section>
+    <img src="{{ post.banner.url }}" alt="{{ post.title }}">
     <div >
 
     <h1>{{ post.title }}</h1>
