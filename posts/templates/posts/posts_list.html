@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Posts</h1>
 {% for post in posts %}
-    <article style="margin-bottom: 20px;font-size: 20px">
+    <article style="margin-bottom: 20px;font-size: 20px;cursor: pointer;" onclick="location.href='{% url 'posts:page' slug=post.slug %}'">
         <h2>{{ post.title }}</h2>
         <i>{{ post.slug }} | {{ post.created_at }}</i>
         <p>{{ post.body }}</p>
