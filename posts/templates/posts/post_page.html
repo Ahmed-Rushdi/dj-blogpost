@@ -3,7 +3,13 @@
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-<i>{{ post.slug }} | {{ post.created_at }}</i>
-<p>{{ post.body }}</p>
+<section class="flex-center">
+    <img src="{{ post.banner.url }}" alt="">
+    <div >
+
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.body }}</p>
+    <a href="{% url 'posts:list' %}">Back to posts</a>
+    </div>
+</section>
 {% endblock content %}

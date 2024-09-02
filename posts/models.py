@@ -9,6 +9,7 @@ class Post(models.Model):
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    banner = models.ImageField(default="fallback.png", blank=True)
 
     def __str__(self) -> str:
         return self.title
