@@ -3,13 +3,15 @@
 {% block title %}Posts{% endblock title %}
 
 {% block content %}
-<h1>Posts</h1>
-{% for post in posts %}
-    <article style="margin-bottom: 20px;font-size: 20px;cursor: pointer;" onclick="location.href='{% url 'posts:page' slug=post.slug %}'">
-        <h2>{{ post.title }}</h2>
-        <i>{{ post.slug }} | {{ post.created_at }}</i>
-        <p>{{ post.body }}</p>
-    </article>
-    <hr>
-{% endfor %}
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold uppercase tracking-widest">Posts</h1>
+    {% for post in posts %}
+        <article class="mt-4 p-4 bg-darkest rounded-lg shadow-md" onclick="location.href='{% url 'posts:page' slug=post.slug %}'">
+            <h2 class="text-xl font-bold">{{ post.title }}</h2>
+            <i class="text-secondary">{{ post.slug }} | {{ post.created_at }}</i>
+            <p>{{ post.body | truncatechars:200 }}</p>
+        </article>
+        {% comment %} <hr class="border-t-2 border-secondary"> {% endcomment %}
+    {% endfor %}
+</div>
 {% endblock content %}

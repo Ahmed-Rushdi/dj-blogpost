@@ -3,13 +3,15 @@
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<section>
-    <img src="{{ post.banner.url }}" alt="{{ post.title }}">
-    <div >
+<div class="w-full max-h-80 overflow-hidden rounded-lg">
+    <img src="{{ post.banner.url }}" alt="{{ post.title }}" class="object-cover object-center w-full h-full max-h-80">
+</div>
 
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.body }}</p>
-    <a href="{% url 'posts:list' %}">Back to posts</a>
+<div class="p-4">
+    <h1 class="text-3xl font-bold uppercase tracking-widest">{{ post.title | title }}</h1>
+    <p class="whitespace-pre-wrap">{{ post.body | linebreaksbr }}</p>
+    <div class="flex justify-end">
+        <a href="{% url 'posts:list' %}" class="hover:text-secondary">Back to posts</a>
     </div>
-</section>
+</div>
 {% endblock content %}
