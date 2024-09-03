@@ -5,5 +5,13 @@
 {% block content %}
 
 <h1>Register</h1>
+<form action="{% url "users:register" %}" method="POST">
+    {% csrf_token %}
 
+    {{ form }}
+
+    <div class="flex justify-end"><button type="submit" class="p-2 bg-secondary text-light rounded hover:bg-darkest transition" >Register</button></div>
+
+    
+</form>
 {% endblock content %}

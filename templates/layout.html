@@ -9,10 +9,11 @@
 </head>
 <body class="bg-darkest text-light">
     <nav class="bg-dark px-4 py-2">
-        <ul class="flex justify-center space-x-4">
+        <ul class="flex justify-center space-x-10">
             <a href="{% url 'home' %}" class="hover:text-secondary">Home</a>
             <a href="{% url 'about' %}" class="hover:text-secondary">About</a>
             <a href="{% url 'posts:list' %}" class="hover:text-secondary">Posts</a>
+            <a href="{% url 'users:register' %}" class="hover:text-secondary">Register</a>
         </ul>
     </nav>
     <main class="container mx-auto p-4">
