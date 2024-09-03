@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Django App{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <nav >
+    <nav class="sticky top-0 bg-slate-600 p-4">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'about' %}">About</a>
         <a href="{% url 'posts:list' %}">Posts</a>
