@@ -1,6 +1,7 @@
 static/src/
 **/__pycache__/*
 node_modules/
+assets/
 # package*.json
 # postcss*.js
 # tailwing*.js
