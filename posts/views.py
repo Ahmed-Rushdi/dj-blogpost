@@ -2,6 +2,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from .models import Post
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 
 # Create your views here.
@@ -28,16 +29,19 @@ def post_page(request: HttpRequest, slug: str) -> HttpResponse:
 @login_required(login_url="users:login")
 def create_post(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
-        data = request.POST.dict()
-        data.pop("csrfmiddlewaretoken"), data.pop("banner")
-        if "banner" in request.FILES:
-            data["banner"] = request.FILES["banner"]
-        print("DATA: ", data)
-        print("FILES: ", request.FILES)
-        Post.objects.create(**data)
-        return redirect("posts:list")
+        form = forms.CreatePost(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect("posts:list")
     else:
-        return render(
-            request,
-            "posts/create_post.html",
-        )
+        form = forms.CreatePost()
+    print("FORM:", form)
+    return render(
+        request,
+        "posts/create_post.html",
+        {
+            "form": form,
+        },
+    )

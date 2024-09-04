@@ -1,17 +1,19 @@
 {% extends "layout.html" %}
-
-{% block title %}{{ post.title }}{% endblock title %}
-
+{% block title %}
+    {{ post.title }}
+{% endblock title %}
 {% block content %}
-<div class="w-full max-h-80 overflow-hidden rounded-lg">
-    <img src="{{ post.banner.url }}" alt="{{ post.title }}" class="object-cover object-center w-full h-full max-h-80">
-</div>
-
-<div class="p-4">
-    <h1 class="text-3xl font-bold uppercase tracking-widest">{{ post.title | title }}</h1>
-    <p class="whitespace-pre-wrap">{{ post.body | linebreaksbr }}</p>
-    <div class="flex justify-end">
-        <a href="{% url 'posts:list' %}" class="hover:text-secondary">Back to posts</a>
+    <div class="w-full max-h-80 overflow-hidden rounded-lg">
+        <img src="{{ post.banner.url }}"
+             alt="{{ post.title }}"
+             class="object-cover object-center w-full h-full max-h-80">
     </div>
-</div>
+    <div class="p-4">
+        <h1 class="text-3xl font-bold uppercase tracking-widest">{{ post.title | title }}</h1>
+        <h2 class="text-xl font-bold tracking-widest mt-2 italic">by {{ post.author | default:"Anonymous" | capfirst }}</h2>
+        <p class="whitespace-pre-wrap">{{ post.body | linebreaksbr }}</p>
+        <div class="flex justify-end">
+            <a href="{% url 'posts:list' %}" class="hover:text-secondary">Back to posts</a>
+        </div>
+    </div>
 {% endblock content %}

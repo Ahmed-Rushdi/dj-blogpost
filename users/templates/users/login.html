@@ -1,20 +1,18 @@
 {% extends "layout.html" %}
-
-{% block title %}Login{% endblock title %}
-
+{% block title %}
+    Login
+{% endblock title %}
 {% block content %}
-
-<h1>Login</h1>
-<form action="{% url "users:login" %}" method="POST" class="flex flex-col [&_input]:my-2 [&_div]:flex [&_div]:justify-between [&_div]:w-80  [&_div]:mx-auto [&_div]:items-center [&_div]:space-x-2 [&_input]:w-full [&_input]:p-2 [&_input]:text-darkest [&_input]:rounded [&_.errorlist_li]:text-secondary [&_.errorlist]:text-xs [&_.errorlist]:text-center [&_.errorlist_li]:before:content-['*']" >
-    {% csrf_token %}
-
-    {{ form }}
-
-    {% if request.GET.next %}
-        <input type="hidden" name="next" value="{{ request.GET.next }}">
-    {% endif %}
-    <div class="flex justify-end"><button type="submit" class="p-2 bg-secondary text-light rounded hover:bg-darkest transition" >Login</button></div>
-
-    
-</form>
+    <h1>Login</h1>
+    <form action="{% url "users:login" %}"
+          method="post"
+          class="flex flex-col [&_input]:my-2 [&_div]:flex [&_div]:justify-between [&_div]:w-80  [&_div]:mx-auto [&_div]:items-center [&_div]:space-x-2 [&_input]:w-full [&_input]:p-2 [&_input]:text-darkest [&_input]:rounded [&_.errorlist_li]:text-secondary [&_.errorlist]:text-xs [&_.errorlist]:text-center [&_.errorlist_li]:before:content-['*']">
+        {% csrf_token %}
+        {{ form }}
+        {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
+        <div class="flex justify-end">
+            <button type="submit"
+                    class="p-2 bg-secondary text-light rounded hover:bg-darkest transition">Login</button>
+        </div>
+    </form>
 {% endblock content %}
