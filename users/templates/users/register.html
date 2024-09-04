@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>Register</h1>
-<form action="{% url "users:register" %}" method="POST">
+<form action="{% url "users:register" %}" method="POST" class="flex flex-col [&_input]:my-2 [&_div]:flex [&_div]:justify-between [&_div]:w-80  [&_div]:mx-auto [&_div]:items-center [&_div]:space-x-2 [&_input]:w-full [&_input]:p-2 [&_input]:text-darkest [&_input]:rounded [&_.errorlist_li]:text-secondary [&_.errorlist]:text-xs [&_.errorlist]:text-center [&_.errorlist_li]:before:content-['*']" >
     {% csrf_token %}
 
     {{ form }}

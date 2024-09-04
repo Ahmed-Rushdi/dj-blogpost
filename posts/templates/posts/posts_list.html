@@ -4,7 +4,13 @@
 
 {% block content %}
 <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold uppercase tracking-widest">Posts</h1>
+    <div class="flex items-center justify-between">
+        <h1 class="text-3xl font-bold uppercase tracking-widest">Posts</h1>
+        <a href="{% url 'posts:create' %}" class="hover:text-secondary flex items-center">
+            Create
+            <span class="text-secondary text-2xl ml-2">+</span>
+        </a>
+    </div>
     {% for post in posts %}
         <article class="mt-4 p-4 bg-darkest rounded-lg shadow-md" onclick="location.href='{% url 'posts:page' slug=post.slug %}'">
             <h2 class="text-xl font-bold">{{ post.title }}</h2>
