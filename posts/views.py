@@ -1,6 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from .models import Post
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -24,10 +25,8 @@ def post_page(request: HttpRequest, slug: str) -> HttpResponse:
     )
 
 
+@login_required(login_url="users:login")
 def create_post(request: HttpRequest) -> HttpResponse:
-    user = request.user
-    if user.is_anonymous:
-        return redirect("users:login")
     if request.method == "POST":
         data = request.POST.dict()
         data.pop("csrfmiddlewaretoken"), data.pop("banner")
