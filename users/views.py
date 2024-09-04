@@ -24,6 +24,8 @@ def handle_login(request: HttpRequest) -> HttpResponse:
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
+            if "next" in request.POST:
+                return redirect(request.POST.get("next"))
             return redirect("posts:list")
         else:
             print(form.errors)
